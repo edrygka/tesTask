@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Test task</title>
+        
+    </head>
+    <body>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+        socket = io.connect('http://localhost:8080', {'reconnectionDelay': 10})
+        socket.on('new number', data => {
+            //<h1>data</h1>
+            console.log(data.result)
+            $('#RN').html(data.result)
+            socket.emit('response', { my: 'data' })
+        })
+        </script>
+        <h1 id="RN"></h1>
+    </body>
+</html>
+
